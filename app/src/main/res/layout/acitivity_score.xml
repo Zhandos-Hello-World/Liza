@@ -2,44 +2,28 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@color/black">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <com.example.liza.SpinnerView
-            android:id="@+id/spinner"
-            android:layout_height="300dp"
-            android:layout_width="300dp"
-            android:background="@drawable/shape"/>
-        <TextView
-            android:id="@+id/score"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Score: "
-            android:textSize="32sp"
-            />
-    </LinearLayout>
+    <com.example.liza.SpinnerView
+        android:id="@+id/spinner"
+        android:layout_height="400dp"
+        android:layout_width="match_parent" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <ImageView
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="120sp"
-            android:src="@drawable/ic_baseline_arrow_drop_up_24"
-            />
-        <Button
-            android:id="@+id/start"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Start"
-            android:textSize="20sp"
-            android:layout_marginStart="80dp"
-            />
-    </LinearLayout>
+        android:layout_gravity="center"
+        android:src="@drawable/ic_baseline_arrow_drop_up_24"
+        />
+
+    <TextView
+        android:id="@+id/score"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Score: "
+        android:textSize="32sp"
+        android:textColor="@color/white"
+        />
 
 </LinearLayout>

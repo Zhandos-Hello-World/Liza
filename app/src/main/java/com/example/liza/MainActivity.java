@@ -10,6 +10,7 @@ import android.webkit.WebViewClient;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.jsoup.Jsoup;
@@ -27,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        new doit().execute();
-    }
-    public void startWeb() {
         webView = findViewById(R.id.web_view);
         webView.setWebViewClient(new WebViewClient() {
             public void onReceivedError(WebView view, int errorCode, String description, String failingUrl) {
@@ -45,12 +43,22 @@ public class MainActivity extends AppCompatActivity {
         webView.setScrollBarStyle(View.SCROLLBARS_INSIDE_OVERLAY);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl(URL_CURRENT);
+        new doit().execute();
+
     }
     public void startSpinner() {
-        Intent intent = new Intent(this, ScoreActivity.class);
-        startActivity(intent);
+        AlertDialog.Builder builder = new AlertDialog.Builder(this)
+                .setTitle("Ссылка не работает")
+                .setMessage("Перейти на рулетку или хотите загрузить основную ссылку?")
+                .setPositiveButton("Рулетка",(dialog1, which) -> {
+                    Intent intent = new Intent(this, StartActivity.class);
+                    startActivity(intent);
+                })
+                .setNegativeButton("Загрузить основную ссылку", (dialog1, which) -> {
+                    webView.loadUrl("https://www.google.com/");
+                });
+        builder.show();
     }
-
 
     class doit extends AsyncTask<Void, Void, Void> {
         String words;
@@ -68,14 +76,9 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(Void unused) {
             super.onPostExecute(unused);
-            if (words == null) {
+            if (words == null || words.isEmpty()) {
                 startSpinner();
-            }
-            if (words.isEmpty()) {
-                startSpinner();
-            }
-            else {
-                startWeb();
+
             }
         }
     }

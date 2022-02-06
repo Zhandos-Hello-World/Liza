@@ -31,13 +31,9 @@ class ScoreActivity : AppCompatActivity(){
         val scoreOutput = findViewById<TextView>(R.id.score)
 
         val task = Runnable { scoreOutput.text = "Score: ${spinner.values[5]}" }
-
-        start.setOnClickListener {
-            handler.removeCallbacks(task)
-            val animation = AnimationUtils.loadAnimation(this, R.anim.clockwise)
-            spinner.startAnimation(animation)
-            handler.postDelayed(task, 3000)
-        }
-
+        handler.removeCallbacks(task)
+        val animation = AnimationUtils.loadAnimation(this, R.anim.clockwise)
+        spinner.startAnimation(animation)
+        handler.postDelayed(task, 3000)
     }
 }

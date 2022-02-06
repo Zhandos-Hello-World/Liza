@@ -37,10 +37,6 @@ public class SpinnerView extends View {
         super(context, attrs, defStyleAttr);
     }
 
-    public SpinnerView(Context context, @Nullable AttributeSet attrs, int defStyleAttr,
-                       int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
 
     public void initClock() {
         height = getHeight();
@@ -63,7 +59,7 @@ public class SpinnerView extends View {
             values[i] = (int)(Math.random() * 1000 + 0);
         }
 
-        canvas.drawColor(Color.WHITE);
+        canvas.drawColor(Color.BLACK);
         drawCircle(canvas);
         drawCenter(canvas);
         drawNumerical(canvas);
@@ -102,7 +98,7 @@ public class SpinnerView extends View {
 
     private void drawCircle(Canvas canvas) {
         paint.reset();
-        paint.setColor(getResources().getColor(android.R.color.darker_gray));
+        paint.setColor(getResources().getColor(android.R.color.white));
         paint.setStrokeWidth(5f);
         paint.setStyle(Paint.Style.STROKE);
         paint.setAntiAlias(true);
